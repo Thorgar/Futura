@@ -1,0 +1,26 @@
+﻿@model Futura.Models.Kunde
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kunde</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kundenname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kundenname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KundenID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

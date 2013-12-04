@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -159,12 +161,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EntwicklerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KundenController.cs" />
+    <Compile Include="Controllers\ProduktController.cs" />
+    <Compile Include="DAL\FuturaEntity.cs" />
+    <Compile Include="DAL\Projectinitializer.cs" />
+    <Compile Include="FuturaEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FuturaEntity.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Entwickler.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kunde.cs" />
+    <Compile Include="Models\Produkt.cs" />
+    <Compile Include="Models\SkillPool.cs" />
+    <Compile Include="Models\Sprache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -177,6 +194,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="FuturaEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FuturaEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="FuturaEntity.edmx.diagram">
+      <DependentUpon>FuturaEntity.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -189,7 +213,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -214,6 +240,21 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Entwickler\Create.cshtml" />
+    <Content Include="Views\Entwickler\Delete.cshtml" />
+    <Content Include="Views\Entwickler\Details.cshtml" />
+    <Content Include="Views\Entwickler\Edit.cshtml" />
+    <Content Include="Views\Entwickler\Index.cshtml" />
+    <Content Include="Views\Kunden\Create.cshtml" />
+    <Content Include="Views\Kunden\Delete.cshtml" />
+    <Content Include="Views\Kunden\Details.cshtml" />
+    <Content Include="Views\Kunden\Edit.cshtml" />
+    <Content Include="Views\Kunden\Index.cshtml" />
+    <Content Include="Views\Produkt\Create.cshtml" />
+    <Content Include="Views\Produkt\Delete.cshtml" />
+    <Content Include="Views\Produkt\Details.cshtml" />
+    <Content Include="Views\Produkt\Edit.cshtml" />
+    <Content Include="Views\Produkt\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

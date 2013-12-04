@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="FuturaEntity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="FuturaEntityTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FuturaEntity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FuturaEntityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProduktSet" EntityType="FuturaEntity.Produkt" />
+          <EntitySet Name="SpracheSet" EntityType="FuturaEntity.Sprache" />
+          <EntitySet Name="EntwicklerSet" EntityType="FuturaEntity.Entwickler" />
+          <EntitySet Name="KundeSet" EntityType="FuturaEntity.Kunde" />
+          <EntitySet Name="SkillPoolSet" EntityType="FuturaEntity.SkillPool" />
+          <AssociationSet Name="SkillPoolSprache" Association="FuturaEntity.SkillPoolSprache">
+            <End Role="SkillPool" EntitySet="SkillPoolSet" />
+            <End Role="Sprache" EntitySet="SpracheSet" />
+          </AssociationSet>
+          <AssociationSet Name="EntwicklerSkillPool" Association="FuturaEntity.EntwicklerSkillPool">
+            <End Role="Entwickler" EntitySet="EntwicklerSet" />
+            <End Role="SkillPool" EntitySet="SkillPoolSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProduktSprache" Association="FuturaEntity.ProduktSprache">
+            <End Role="Produkt" EntitySet="ProduktSet" />
+            <End Role="Sprache" EntitySet="SpracheSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Produkt">
+          <Key>
+            <PropertyRef Name="ProduktID" />
+          </Key>
+          <Property Name="ProduktID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Produkttitel" Type="String" Nullable="false" />
+          <Property Name="SprachID" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sprache" Relationship="FuturaEntity.ProduktSprache" FromRole="Produkt" ToRole="Sprache" />
+        </EntityType>
+        <EntityType Name="Sprache">
+          <Key>
+            <PropertyRef Name="SprachID" />
+          </Key>
+          <Property Name="SprachID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sprachtitel" Type="String" Nullable="false" />
+          <NavigationProperty Name="SkillPool" Relationship="FuturaEntity.SkillPoolSprache" FromRole="Sprache" ToRole="SkillPool" />
+          <NavigationProperty Name="Produkt" Relationship="FuturaEntity.ProduktSprache" FromRole="Sprache" ToRole="Produkt" />
+        </EntityType>
+        <EntityType Name="Entwickler">
+          <Key>
+            <PropertyRef Name="EntwicklerID" />
+          </Key>
+          <Property Name="EntwicklerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entwicklername" Type="String" Nullable="true" />
+          <NavigationProperty Name="SkillPool" Relationship="FuturaEntity.EntwicklerSkillPool" FromRole="Entwickler" ToRole="SkillPool" />
+        </EntityType>
+        <EntityType Name="Kunde">
+          <Key>
+            <PropertyRef Name="KundenID" />
+          </Key>
+          <Property Name="KundenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kundenname" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkillPool">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SprachID" Type="String" Nullable="false" />
+          <Property Name="EntwicklerID" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sprache" Relationship="FuturaEntity.SkillPoolSprache" FromRole="SkillPool" ToRole="Sprache" />
+          <NavigationProperty Name="Entwickler" Relationship="FuturaEntity.EntwicklerSkillPool" FromRole="SkillPool" ToRole="Entwickler" />
+        </EntityType>
+        <Association Name="SkillPoolSprache">
+          <End Type="FuturaEntity.SkillPool" Role="SkillPool" Multiplicity="0..1" />
+          <End Type="FuturaEntity.Sprache" Role="Sprache" Multiplicity="*" />
+        </Association>
+        <Association Name="EntwicklerSkillPool">
+          <End Type="FuturaEntity.Entwickler" Role="Entwickler" Multiplicity="*" />
+          <End Type="FuturaEntity.SkillPool" Role="SkillPool" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ProduktSprache">
+          <End Type="FuturaEntity.Produkt" Role="Produkt" Multiplicity="*" />
+          <End Type="FuturaEntity.Sprache" Role="Sprache" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="FuturaEntity" />
+        <Alias Key="Target" Value="FuturaEntity.Store" />
+        <EntityContainerMapping CdmEntityContainer="FuturaEntityContainer" StorageEntityContainer="FuturaEntityTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
