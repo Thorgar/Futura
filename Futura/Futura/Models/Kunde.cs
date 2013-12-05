@@ -10,6 +10,6 @@ namespace Futura.Models
     {
         [Key]
         public int KundenID { get; set; }
-        public string Kundenname { get; set; }
+        public string KundenName { get; set; }
     }
 }

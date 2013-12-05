@@ -25,12 +25,22 @@ namespace Futura.DAL
 
             var kunde = new List<Kunde>
             {
-                new Kunde{KundenID=1,Kundenname="Lotman GmbH"},
-                new Kunde{KundenID=1,Kundenname="Mantis Corporation"},
-                new Kunde{KundenID=1,Kundenname="Shrimp Co.KG"},
-                new Kunde{KundenID=1,Kundenname="HitchHiker GmbH"}
+                new Kunde{KundenID=1,KundenName="Lotman GmbH"},
+                new Kunde{KundenID=1,KundenName="Mantis Corporation"},
+                new Kunde{KundenID=1,KundenName="Shrimp Co.KG"},
+                new Kunde{KundenID=1,KundenName="HitchHiker GmbH"}
             };
             kunde.ForEach(s => context.Kunden.Add(s));
+            context.SaveChanges();
+
+            var sprachen = new List<Sprache>
+            {
+                new Sprache{SprachID=1, Sprachtitel="C#"},
+                new Sprache{SprachID=2, Sprachtitel="C++"},
+                new Sprache{SprachID=3,Sprachtitel="Java"},
+                new Sprache{SprachID=4,Sprachtitel="Delphi"}
+            };
+            sprachen.ForEach(s => context.Sprachen.Add(s));
             context.SaveChanges();
 
             var produkte = new List<Produkt>
@@ -44,15 +54,7 @@ namespace Futura.DAL
             produkte.ForEach(s => context.Produkte.Add(s));
             context.SaveChanges();
 
-            var sprachen = new List<Sprache>
-            {
-                new Sprache{SprachID=1, Sprachtitel="C#"},
-                new Sprache{SprachID=2, Sprachtitel="C++"},
-                new Sprache{SprachID=3,Sprachtitel="Java"},
-                new Sprache{SprachID=4,Sprachtitel="Delphi"}
-            };
-            sprachen.ForEach(s => context.Sprachen.Add(s));
-            context.SaveChanges();
+         
 
             var skillPool = new List<SkillPool>
             {

@@ -11,107 +11,116 @@ using Futura.DAL;
 
 namespace Futura.Controllers
 {
-    public class KundenController : Controller
+    public class SkillPoolController : Controller
     {
         private FuturaEntity db = new FuturaEntity();
 
-        // GET: /Kunden/
+        // GET: /SkillPool/
         public ActionResult Index()
         {
-            return View(db.Kunden.ToList());
+            var skills = db.Skills.Include(s => s.Entwickler).Include(s => s.Sprachen);
+            return View(skills.ToList());
         }
 
-        // GET: /Kunden/Details/5
+        // GET: /SkillPool/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kunde kunde = db.Kunden.Find(id);
-            if (kunde == null)
+            SkillPool skillpool = db.Skills.Find(id);
+            if (skillpool == null)
             {
                 return HttpNotFound();
             }
-            return View(kunde);
+            return View(skillpool);
         }
 
-        // GET: /Kunden/Create
+        // GET: /SkillPool/Create
         public ActionResult Create()
         {
+            ViewBag.EntwicklerID = new SelectList(db.Entwickler, "EntwicklerID", "Enwicklername");
+            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel");
             return View();
         }
 
-        // POST: /Kunden/Create
+        // POST: /SkillPool/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="KundenID,Kundenname")] Kunde kunde)
+        public ActionResult Create([Bind(Include="SkillPoolID,EntwicklerID,SprachID")] SkillPool skillpool)
         {
             if (ModelState.IsValid)
             {
-                db.Kunden.Add(kunde);
+                db.Skills.Add(skillpool);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(kunde);
+            ViewBag.EntwicklerID = new SelectList(db.Entwickler, "EntwicklerID", "Enwicklername", skillpool.EntwicklerID);
+            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", skillpool.SprachID);
+            return View(skillpool);
         }
 
-        // GET: /Kunden/Edit/5
+        // GET: /SkillPool/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kunde kunde = db.Kunden.Find(id);
-            if (kunde == null)
+            SkillPool skillpool = db.Skills.Find(id);
+            if (skillpool == null)
             {
                 return HttpNotFound();
             }
-            return View(kunde);
+            ViewBag.EntwicklerID = new SelectList(db.Entwickler, "EntwicklerID", "Enwicklername", skillpool.EntwicklerID);
+            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", skillpool.SprachID);
+            return View(skillpool);
         }
 
-        // POST: /Kunden/Edit/5
+        // POST: /SkillPool/Edit/5
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="KundenID,Kundenname")] Kunde kunde)
+        public ActionResult Edit([Bind(Include="SkillPoolID,EntwicklerID,SprachID")] SkillPool skillpool)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kunde).State = EntityState.Modified;
+                db.Entry(skillpool).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(kunde);
+            ViewBag.EntwicklerID = new SelectList(db.Entwickler, "EntwicklerID", "Enwicklername", skillpool.EntwicklerID);
+            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", skillpool.SprachID);
+            return View(skillpool);
         }
 
-        // GET: /Kunden/Delete/5
+        // GET: /SkillPool/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kunde kunde = db.Kunden.Find(id);
-            if (kunde == null)
+            SkillPool skillpool = db.Skills.Find(id);
+            if (skillpool == null)
             {
                 return HttpNotFound();
             }
-            return View(kunde);
+            return View(skillpool);
         }
 
-        // POST: /Kunden/Delete/5
+        // POST: /SkillPool/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kunde kunde = db.Kunden.Find(id);
-            db.Kunden.Remove(kunde);
+            SkillPool skillpool = db.Skills.Find(id);
+            db.Skills.Remove(skillpool);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

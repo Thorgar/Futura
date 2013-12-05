@@ -16,6 +16,7 @@ namespace Futura.DAL
         public DbSet<Produkt> Produkte { get; set; }
         public DbSet<Sprache> Sprachen { get; set; }
         public DbSet<SkillPool> Skills { get; set; }
+        public DbSet<Projekt> Projekte { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

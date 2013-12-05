@@ -1,0 +1,74 @@
+﻿@model Futura.Models.Projekt
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Projekt</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Entwickler.Enwicklername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entwickler.Enwicklername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kunde.KundenName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kunde.KundenName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produkt.Produkttitel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produkt.Produkttitel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Projekttitel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Projekttitel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abgabetermin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abgabetermin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abgeschlossen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abgeschlossen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Projektbeschreibung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Projektbeschreibung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjektID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

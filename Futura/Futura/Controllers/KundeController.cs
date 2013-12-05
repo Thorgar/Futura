@@ -11,112 +11,107 @@ using Futura.DAL;
 
 namespace Futura.Controllers
 {
-    public class ProduktController : Controller
+    public class KundeController : Controller
     {
         private FuturaEntity db = new FuturaEntity();
 
-        // GET: /Produkt/
+        // GET: /Kunde/
         public ActionResult Index()
         {
-            var produkte = db.Produkte.Include(p => p.Sprache);
-            return View(produkte.ToList());
+            return View(db.Kunden.ToList());
         }
 
-        // GET: /Produkt/Details/5
+        // GET: /Kunde/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produkt produkt = db.Produkte.Find(id);
-            if (produkt == null)
+            Kunde kunde = db.Kunden.Find(id);
+            if (kunde == null)
             {
                 return HttpNotFound();
             }
-            return View(produkt);
+            return View(kunde);
         }
 
-        // GET: /Produkt/Create
+        // GET: /Kunde/Create
         public ActionResult Create()
         {
-            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel");
             return View();
         }
 
-        // POST: /Produkt/Create
+        // POST: /Kunde/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ProduktID,Produkttitel,SprachID")] Produkt produkt)
+        public ActionResult Create([Bind(Include="KundenID,KundenName")] Kunde kunde)
         {
             if (ModelState.IsValid)
             {
-                db.Produkte.Add(produkt);
+                db.Kunden.Add(kunde);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", produkt.SprachID);
-            return View(produkt);
+            return View(kunde);
         }
 
-        // GET: /Produkt/Edit/5
+        // GET: /Kunde/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produkt produkt = db.Produkte.Find(id);
-            if (produkt == null)
+            Kunde kunde = db.Kunden.Find(id);
+            if (kunde == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", produkt.SprachID);
-            return View(produkt);
+            return View(kunde);
         }
 
-        // POST: /Produkt/Edit/5
+        // POST: /Kunde/Edit/5
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ProduktID,Produkttitel,SprachID")] Produkt produkt)
+        public ActionResult Edit([Bind(Include="KundenID,KundenName")] Kunde kunde)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produkt).State = EntityState.Modified;
+                db.Entry(kunde).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SprachID = new SelectList(db.Sprachen, "SprachID", "Sprachtitel", produkt.SprachID);
-            return View(produkt);
+            return View(kunde);
         }
 
-        // GET: /Produkt/Delete/5
+        // GET: /Kunde/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produkt produkt = db.Produkte.Find(id);
-            if (produkt == null)
+            Kunde kunde = db.Kunden.Find(id);
+            if (kunde == null)
             {
                 return HttpNotFound();
             }
-            return View(produkt);
+            return View(kunde);
         }
 
-        // POST: /Produkt/Delete/5
+        // POST: /Kunde/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produkt produkt = db.Produkte.Find(id);
-            db.Produkte.Remove(produkt);
+            Kunde kunde = db.Kunden.Find(id);
+            db.Kunden.Remove(kunde);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

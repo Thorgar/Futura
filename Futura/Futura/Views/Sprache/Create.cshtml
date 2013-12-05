@@ -1,33 +1,32 @@
-﻿@model Futura.Models.Kunde
+﻿@model Futura.Models.Sprache
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Kunde</h4>
+        <h4>Sprache</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.KundenID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Kundenname, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Sprachtitel, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Kundenname)
-                @Html.ValidationMessageFor(model => model.Kundenname)
+                @Html.EditorFor(model => model.Sprachtitel)
+                @Html.ValidationMessageFor(model => model.Sprachtitel)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

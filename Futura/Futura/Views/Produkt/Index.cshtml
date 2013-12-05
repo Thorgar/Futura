@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Produkttitel)
+            @Html.DisplayNameFor(model => model.Sprache.Sprachtitel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SprachID)
+            @Html.DisplayNameFor(model => model.Produkttitel)
         </th>
         <th></th>
     </tr>
@@ -23,10 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Produkttitel)
+            @Html.DisplayFor(modelItem => item.Sprache.Sprachtitel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SprachID)
+            @Html.DisplayFor(modelItem => item.Produkttitel)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProduktID }) |

@@ -163,15 +163,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EntwicklerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KundenController.cs" />
+    <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="Controllers\ProduktController.cs" />
+    <Compile Include="Controllers\ProjektController.cs" />
+    <Compile Include="Controllers\SkillPoolController.cs" />
+    <Compile Include="Controllers\SpracheController.cs" />
     <Compile Include="DAL\FuturaEntity.cs" />
     <Compile Include="DAL\Projectinitializer.cs" />
-    <Compile Include="FuturaEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FuturaEntity.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +178,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\Produkt.cs" />
+    <Compile Include="Models\Projekt.cs" />
     <Compile Include="Models\SkillPool.cs" />
     <Compile Include="Models\Sprache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,13 +193,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="FuturaEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FuturaEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="FuturaEntity.edmx.diagram">
-      <DependentUpon>FuturaEntity.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -245,16 +237,31 @@
     <Content Include="Views\Entwickler\Details.cshtml" />
     <Content Include="Views\Entwickler\Edit.cshtml" />
     <Content Include="Views\Entwickler\Index.cshtml" />
-    <Content Include="Views\Kunden\Create.cshtml" />
-    <Content Include="Views\Kunden\Delete.cshtml" />
-    <Content Include="Views\Kunden\Details.cshtml" />
-    <Content Include="Views\Kunden\Edit.cshtml" />
-    <Content Include="Views\Kunden\Index.cshtml" />
+    <Content Include="Views\Kunde\Create.cshtml" />
+    <Content Include="Views\Kunde\Delete.cshtml" />
+    <Content Include="Views\Kunde\Details.cshtml" />
+    <Content Include="Views\Kunde\Edit.cshtml" />
+    <Content Include="Views\Kunde\Index.cshtml" />
+    <Content Include="Views\SkillPool\Create.cshtml" />
+    <Content Include="Views\SkillPool\Delete.cshtml" />
+    <Content Include="Views\SkillPool\Details.cshtml" />
+    <Content Include="Views\SkillPool\Edit.cshtml" />
+    <Content Include="Views\SkillPool\Index.cshtml" />
+    <Content Include="Views\Sprache\Create.cshtml" />
+    <Content Include="Views\Sprache\Delete.cshtml" />
+    <Content Include="Views\Sprache\Details.cshtml" />
+    <Content Include="Views\Sprache\Edit.cshtml" />
+    <Content Include="Views\Sprache\Index.cshtml" />
     <Content Include="Views\Produkt\Create.cshtml" />
     <Content Include="Views\Produkt\Delete.cshtml" />
     <Content Include="Views\Produkt\Details.cshtml" />
     <Content Include="Views\Produkt\Edit.cshtml" />
     <Content Include="Views\Produkt\Index.cshtml" />
+    <Content Include="Views\Projekt\Create.cshtml" />
+    <Content Include="Views\Projekt\Delete.cshtml" />
+    <Content Include="Views\Projekt\Details.cshtml" />
+    <Content Include="Views\Projekt\Edit.cshtml" />
+    <Content Include="Views\Projekt\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

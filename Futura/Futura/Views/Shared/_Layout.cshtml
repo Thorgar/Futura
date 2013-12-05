@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meine ASP.NET-Anwendung</title>
+    <title>Futura</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,15 +18,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Anwendungsname", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Enwickler", "Index" , "Entwickler")</li>
-                    <li>@Html.ActionLink("Kunden", "Index", "Kunden")</li>
-                    <li>@Html.ActionLink("Startseite", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Info", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Projekt", "Index" , "Projekt")</li>
+                    <li>@Html.ActionLink("Entwickler", "Index", "Entwickler")</li>
+                    <li>@Html.ActionLink("Kunde", "Index", "Kunde")</li>
+                    <li>@Html.ActionLink("Produkt", "Index", "Produkt")</li>
+                    <li>@Html.ActionLink("Skills", "Index", "SkillPool")</li>
+                    <li>@Html.ActionLink("Sprache", "Index", "Sprache")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -36,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Meine ASP.NET-Anwendung</p>
+            <p>&copy; @DateTime.Now.Year - Futura</p>
         </footer>
     </div>
 

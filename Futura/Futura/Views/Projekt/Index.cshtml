@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Futura.Models.Projekt>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Entwickler.Enwicklername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kunde.KundenName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produkt.Produkttitel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Projekttitel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abgabetermin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abgeschlossen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Projektbeschreibung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Entwickler.Enwicklername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kunde.KundenName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produkt.Produkttitel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Projekttitel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abgabetermin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abgeschlossen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Projektbeschreibung)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProjektID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjektID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjektID })
+        </td>
+    </tr>
+}
+
+</table>

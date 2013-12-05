@@ -1,4 +1,4 @@
-﻿@model Futura.Models.Produkt
+﻿@model Futura.Models.SkillPool
 
 @{
     ViewBag.Title = "Create";
@@ -12,15 +12,15 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Produkt</h4>
+        <h4>SkillPool</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Produkttitel, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EntwicklerID, "EntwicklerID", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Produkttitel)
-                @Html.ValidationMessageFor(model => model.Produkttitel)
+                @Html.DropDownList("EntwicklerID", String.Empty)
+                @Html.ValidationMessageFor(model => model.EntwicklerID)
             </div>
         </div>
 
