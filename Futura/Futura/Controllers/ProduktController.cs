@@ -47,7 +47,7 @@ namespace Futura.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ProduktID,Produkttitel,SprachID")] Produkt produkt)
+        public ActionResult Create([Bind(Include="ProduktID,Produkttitel")] Produkt produkt)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Futura.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ProduktID,Produkttitel,SprachID")] Produkt produkt)
+        public ActionResult Edit([Bind(Include="ProduktID,Produkttitel")] Produkt produkt)
         {
             if (ModelState.IsValid)
             {

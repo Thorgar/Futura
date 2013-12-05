@@ -14,9 +14,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Produkttitel)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SprachID)
-        </th>
         <th></th>
     </tr>
 
@@ -24,9 +21,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Produkttitel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SprachID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProduktID }) |

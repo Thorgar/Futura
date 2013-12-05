@@ -11,6 +11,7 @@ namespace Futura.Models
         [Key]
         public int ProduktID { get; set; }
         public string Produkttitel { get; set; }
-        public int SprachID { get; set; }
+        public List<Sprache> Sprachen { get; set; }
+        public Sprache Sprache { get; set; }
     }
 }
