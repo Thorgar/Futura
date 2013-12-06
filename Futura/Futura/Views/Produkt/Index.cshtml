@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Sprache.Sprachtitel)
+            @Html.ActionLink("Sprache", "Index", new { sortOrder = ViewBag.SpracheSortPar })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Produkttitel)
+            @Html.ActionLink("Produkt", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th></th>
     </tr>

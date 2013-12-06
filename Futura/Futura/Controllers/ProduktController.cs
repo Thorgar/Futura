@@ -16,10 +16,28 @@ namespace Futura.Controllers
         private FuturaEntity db = new FuturaEntity();
 
         // GET: /Produkt/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            var produkte = db.Produkte.Include(p => p.Sprache);
-            return View(produkte.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+            ViewBag.SpracheSortPar = sortOrder == "Language" ? "Language_desc" : "Language";
+            var produkte = from p in db.Produkte.Include(p => p.Sprache)
+                         select p;
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    produkte = produkte.OrderByDescending(p => p.Produkttitel);
+                    break;
+                case "Language_desc":
+                    produkte = produkte.OrderByDescending(p => p.SprachID);
+                    break;
+                case "Language":
+                    produkte = produkte.OrderBy(p => p.SprachID);
+                    break;
+                default:
+                    produkte = produkte.OrderBy(p => p.Produkttitel);
+                    break;
+            }
+            return View(produkte.ToList());            
         }
 
         // GET: /Produkt/Details/5
