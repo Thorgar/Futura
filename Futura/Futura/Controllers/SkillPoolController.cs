@@ -16,10 +16,28 @@ namespace Futura.Controllers
         private FuturaEntity db = new FuturaEntity();
 
         // GET: /SkillPool/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            var skills = db.Skills.Include(s => s.Entwickler).Include(s => s.Sprachen);
-            return View(skills.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+            ViewBag.SpracheSortPar = sortOrder == "Language" ? "Language_desc" : "Language";
+            var skills = from s in db.Skills.Include(s => s.Entwickler).Include(s => s.Sprachen)
+                           select s;
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    skills = skills.OrderByDescending(s => s.EntwicklerID);
+                    break;
+                case "Language_desc":
+                    skills = skills.OrderByDescending(s => s.SprachID);
+                    break;
+                case "Language":
+                    skills = skills.OrderBy(s => s.SprachID);
+                    break;
+                default:
+                    skills = skills.OrderBy(s => s.EntwicklerID);
+                    break;
+            }
+            return View(skills.ToList());                        
         }
 
         // GET: /SkillPool/Details/5

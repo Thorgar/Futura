@@ -16,9 +16,21 @@ namespace Futura.Controllers
         private FuturaEntity db = new FuturaEntity();
 
         // GET: /Entwickler/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Entwickler.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+            var entwickler = from e in db.Entwickler
+                         select e;
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    entwickler = entwickler.OrderByDescending(e => e.Enwicklername);
+                    break;
+                default:
+                    entwickler = entwickler.OrderBy(e => e.Enwicklername);
+                    break;
+            }
+            return View(entwickler.ToList());
         }
 
         // GET: /Entwickler/Details/5
