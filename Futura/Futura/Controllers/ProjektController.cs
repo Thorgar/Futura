@@ -16,9 +16,42 @@ namespace Futura.Controllers
         private FuturaEntity db = new FuturaEntity();
 
         // GET: /Projekt/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            var projekte = db.Projekte.Include(p => p.Entwickler).Include(p => p.Kunde).Include(p => p.Produkt);
+            ViewBag.ProdukttitelSortParm = String.IsNullOrEmpty(sortOrder) ? "Projekttitel_desc" : "";
+            ViewBag.EntwicklerSortPar = sortOrder == "Entwickler" ? "Entwickler_desc" : "Entwickler";
+            ViewBag.KundeSortPar = sortOrder == "Kunde" ? "Kunde_desc" : "Kunde";
+            ViewBag.ProduktSortPar = sortOrder == "Produkt" ? "Produkt_desc" : "Produkt";           
+
+            var projekte = from p in db.Projekte.Include(p => p.Entwickler).Include(p => p.Kunde).Include(p => p.Produkt)
+                         select p;
+            switch (sortOrder)
+            {
+                case "Projekttitel_desc":
+                    projekte = projekte.OrderByDescending(p => p.Projekttitel);
+                    break;
+                case "Entwickler":
+                    projekte = projekte.OrderBy(p => p.EntwicklerID);
+                    break;
+                case "Entwickler_desc":
+                    projekte = projekte.OrderByDescending(p => p.EntwicklerID);
+                    break;
+                case "Kunde_desc":
+                    projekte = projekte.OrderByDescending(p => p.KundenID);
+                    break;
+                case "Kunde":
+                    projekte = projekte.OrderBy(p => p.KundenID);
+                    break;
+                case "Produkt_desc":
+                    projekte = projekte.OrderByDescending(p => p.ProduktID);
+                    break;
+                case "Produkt":
+                    projekte = projekte.OrderBy(p => p.ProduktID);
+                    break;
+                default:
+                    projekte = projekte.OrderBy(p => p.Projekttitel);
+                    break;
+            }            
             return View(projekte.ToList());
         }
 
