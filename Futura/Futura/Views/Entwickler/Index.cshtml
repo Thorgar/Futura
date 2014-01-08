@@ -23,6 +23,10 @@
             @Html.DisplayFor(modelItem => item.Enwicklername)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EntwicklerID)
+        </td>
+
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EntwicklerID }) |
             @Html.ActionLink("Details", "Details", new { id=item.EntwicklerID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EntwicklerID })
