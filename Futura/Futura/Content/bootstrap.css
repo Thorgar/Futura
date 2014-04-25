@@ -221,7 +221,7 @@ textarea {
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 0;  
 }
 
 @media print {
@@ -315,7 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #eee;
 }
 
 input,
@@ -1406,7 +1406,7 @@ pre code {
 
 table {
   max-width: 100%;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 th {

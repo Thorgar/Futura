@@ -5,9 +5,9 @@
 }
 
 <h2>Index</h2>
-
+@if (Request.IsAuthenticated) {
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Erstellen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,11 +23,12 @@
             @Html.DisplayFor(modelItem => item.KundenName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KundenID }) |
+            @Html.ActionLink("Editieren", "Edit", new { id=item.KundenID }) |
             @Html.ActionLink("Details", "Details", new { id=item.KundenID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KundenID })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.KundenID })
         </td>
     </tr>
 }
 
 </table>
+}

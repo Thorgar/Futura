@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Erstellen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,14 +54,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Abgeschlossen)
-        </td>
+        </td>        
         <td>
-            @Html.DisplayFor(modelItem => item.Projektbeschreibung)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProjektID }) |
+            @Html.ActionLink("Editieren", "Edit", new { id=item.ProjektID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProjektID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProjektID })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.ProjektID })
         </td>
     </tr>
 }

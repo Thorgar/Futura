@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Editieren</h2>
 
 
 @using (Html.BeginForm())
@@ -18,23 +18,19 @@
         @Html.HiddenFor(model => model.KundenID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KundenName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KundenName)
-                @Html.ValidationMessageFor(model => model.KundenName)
-            </div>
+            @Html.LabelFor(model => model.KundenName)          
+            @Html.TextBoxFor(model => model.KundenName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.KundenName)           
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="form-group">            
+                <input type="submit" value="Speichern" class="btn btn-default" />            
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zurück zur Liste", "Index")
 </div>
 
 @section Scripts {

@@ -4,86 +4,79 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Erstellen</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Projekt</h4>
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Projekttitel, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Projekttitel)
-                @Html.ValidationMessageFor(model => model.Projekttitel)
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Projekttitel)
+                    @Html.TextBoxFor(model => model.Projekttitel, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Projekttitel)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KundenID, "KundenID")
+                    @Html.DropDownList("KundenID", null,String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.KundenID)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EntwicklerID, "EntwicklerID")
+                    @Html.DropDownList("EntwicklerID", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EntwicklerID)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProduktID, "ProduktID")
+                    @Html.DropDownList("ProduktID", null, String.Empty, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProduktID)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Abgabetermin)
+                    @Html.TextBoxFor(model => model.Abgabetermin, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Abgabetermin)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Abgeschlossen)
+                    @Html.EditorFor(model => model.Abgeschlossen, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Abgeschlossen)
+                </div>
+                </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Projektbeschreibung)
+                    @Html.TextAreaFor(model => model.Projektbeschreibung, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Projektbeschreibung)
+
+                </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.KundenID, "KundenID", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("KundenID", String.Empty)
-                @Html.ValidationMessageFor(model => model.KundenID)
+                <div class="form-group">
+                    <input type="submit" value="Erstellen" class="btn btn-default" />
+                </div>
             </div>
-        </div>
+            }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EntwicklerID, "EntwicklerID", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EntwicklerID", String.Empty)
-                @Html.ValidationMessageFor(model => model.EntwicklerID)
+            <div>
+                @Html.ActionLink("Back to List", "Index")
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProduktID, "ProduktID", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ProduktID", String.Empty)
-                @Html.ValidationMessageFor(model => model.ProduktID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Abgabetermin, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Abgabetermin)
-                @Html.ValidationMessageFor(model => model.Abgabetermin)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Abgeschlossen, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Abgeschlossen)
-                @Html.ValidationMessageFor(model => model.Abgeschlossen)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Projektbeschreibung, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Projektbeschreibung)
-                @Html.ValidationMessageFor(model => model.Projektbeschreibung)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Erstellen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Sprachen.Sprachtitel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SkillPoolID }) |
+            @Html.ActionLink("Editieren", "Edit", new { id=item.SkillPoolID }) |
             @Html.ActionLink("Details", "Details", new { id=item.SkillPoolID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SkillPoolID })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.SkillPoolID })
         </td>
     </tr>
 }
