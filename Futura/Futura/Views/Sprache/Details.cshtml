@@ -5,22 +5,24 @@
 }
 
 <h2>Details</h2>
+@if (Request.IsAuthenticated)
+{
+    <div>
+        <h4>Sprache</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Sprachtitel)
+            </dt>
 
-<div>
-    <h4>Sprache</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sprachtitel)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Sprachtitel)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sprachtitel)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editieren", "Edit", new { id = Model.SprachID }) |
-    @Html.ActionLink("Zurück zur Liste", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editieren", "Edit", new { id = Model.SprachID }) |
+        @Html.ActionLink("Zurück zur Liste", "Index")
+    </p>
+}

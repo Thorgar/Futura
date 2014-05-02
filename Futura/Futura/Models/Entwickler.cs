@@ -10,6 +10,7 @@ namespace Futura.Models
     {
         [Key]
         public int EntwicklerID { get; set; }
+        [Required]
         public string Enwicklername { get; set; }
     }
 }

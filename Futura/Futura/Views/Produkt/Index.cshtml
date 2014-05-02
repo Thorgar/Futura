@@ -5,35 +5,42 @@
 }
 
 <h2>Index</h2>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Erstellen", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Sprache", "Index", new { sortOrder = ViewBag.SpracheSortPar })
+            </th>
+            <th>
+                @Html.ActionLink("Produkt", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Erstellen", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Sprache", "Index", new { sortOrder = ViewBag.SpracheSortPar })
-        </th>
-        <th>
-            @Html.ActionLink("Produkt", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sprache.Sprachtitel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produkttitel)
+                </td>
+                <td>
+                    @Html.ActionLink("Editieren", "Edit", new { id = item.ProduktID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProduktID }) |
+                    @Html.ActionLink("Löschen", "Delete", new { id = item.ProduktID })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sprache.Sprachtitel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Produkttitel)
-        </td>
-        <td>
-            @Html.ActionLink("Editieren", "Edit", new { id=item.ProduktID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProduktID }) |
-            @Html.ActionLink("Löschen", "Delete", new { id=item.ProduktID })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+@if (!Request.IsAuthenticated)
+{
+    <h1>Bitte Loggen sie sich ein.</h1>
+}

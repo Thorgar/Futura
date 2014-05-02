@@ -5,29 +5,36 @@
 }
 
 <h2>Index</h2>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Erstellen", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Entwicklername", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Erstellen", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Entwicklername", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enwicklername)
+                </td>
+                <td>
+                    @Html.ActionLink("Editieren", "Edit", new { id = item.EntwicklerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EntwicklerID }) |
+                    @Html.ActionLink("Löschen", "Delete", new { id = item.EntwicklerID })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enwicklername)
-        </td>
-        <td>
-            @Html.ActionLink("Editieren", "Edit", new { id=item.EntwicklerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EntwicklerID }) |
-            @Html.ActionLink("Löschen", "Delete", new { id=item.EntwicklerID })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+@if (!Request.IsAuthenticated)
+{
+    <h1>Bitte Loggen sie sich ein.</h1>
+}

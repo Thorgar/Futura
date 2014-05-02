@@ -11,9 +11,10 @@ namespace Futura.Models
     {
         [Key]
         public int ProduktID { get; set; }
-        public string Produkttitel { get; set; }
+        [Required]
+        public string Produkttitel { get; set; }        
         public int SprachID { get; set; }
-
+        [Required]
         [ForeignKey("SprachID")]
         public virtual Sprache Sprache { get; set; }
     }
