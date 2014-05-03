@@ -5,62 +5,69 @@
 }
 
 <h2>Index</h2>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Erstellen", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Entwickler", "Index", new { sortOrder = ViewBag.EntwicklerSortPar })
+            </th>
+            <th>
+                @Html.ActionLink("Kunde", "Index", new { sortOrder = ViewBag.KundeSortPar })
+            </th>
+            <th>
+                @Html.ActionLink("Produkt", "Index", new { sortOrder = ViewBag.ProduktSortPar })
+            </th>
+            <th>
+                @Html.ActionLink("Projekttitel", "Index", new { sortOrder = ViewBag.ProdukttitelSortParm })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abgabetermin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abgeschlossen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Projektbeschreibung)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Erstellen", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Entwickler", "Index", new { sortOrder = ViewBag.EntwicklerSortPar })
-        </th>
-        <th>
-            @Html.ActionLink("Kunde", "Index", new { sortOrder = ViewBag.KundeSortPar })
-        </th>
-        <th>
-            @Html.ActionLink("Produkt", "Index", new { sortOrder = ViewBag.ProduktSortPar })
-        </th>
-        <th>
-            @Html.ActionLink("Projekttitel", "Index", new { sortOrder = ViewBag.ProdukttitelSortParm })
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Abgabetermin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Abgeschlossen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Projektbeschreibung)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entwickler.Enwicklername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kunde.KundenName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produkt.Produkttitel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Projekttitel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abgabetermin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abgeschlossen)
+                </td>
+                <td>
+                    @Html.ActionLink("Editieren", "Edit", new { id = item.ProjektID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProjektID }) |
+                    @Html.ActionLink("Löschen", "Delete", new { id = item.ProjektID })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Entwickler.Enwicklername)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kunde.KundenName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Produkt.Produkttitel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Projekttitel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Abgabetermin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Abgeschlossen)
-        </td>        
-        <td>
-            @Html.ActionLink("Editieren", "Edit", new { id=item.ProjektID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProjektID }) |
-            @Html.ActionLink("Löschen", "Delete", new { id=item.ProjektID })
-        </td>
-    </tr>
+    </table>
 }
-
-</table>
+@if(!Request.IsAuthenticated)
+{
+    <h1>Bitte Loggen sie sich ein.</h1>
+}

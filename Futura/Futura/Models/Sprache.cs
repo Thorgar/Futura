@@ -10,6 +10,7 @@ namespace Futura.Models
     {
         [Key]
         public int SprachID { get; set; }
+        [Required]
         public string Sprachtitel { get; set; }
     }
 }
