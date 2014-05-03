@@ -13,12 +13,12 @@ namespace Futura.Models
         public int SkillPoolID { get; set; }       
 
         public int EntwicklerID { get; set; }
-        [Required]
+        
         [ForeignKey("EntwicklerID")]
         public virtual Entwickler Entwickler { get; set; }
 
         public int SprachID { get; set; }
-        [Required]
+        
         [ForeignKey("SprachID")]
         public virtual Sprache Sprachen { get; set; }     
     }
