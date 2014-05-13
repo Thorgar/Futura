@@ -20,8 +20,12 @@ namespace Futura.Controllers
         {
             ViewBag.ProdukttitelSortParm = String.IsNullOrEmpty(sortOrder) ? "Projekttitel_desc" : "";
             ViewBag.EntwicklerSortPar = sortOrder == "Entwickler" ? "Entwickler_desc" : "Entwickler";
-            ViewBag.KundeSortPar = sortOrder == "Kunde" ? "Kunde_desc" : "Kunde";
-            ViewBag.ProduktSortPar = sortOrder == "Produkt" ? "Produkt_desc" : "Produkt";           
+            ViewBag.KundeSortPar = sortOrder == "Kunde" ? "Kunde_desc" : "Kunde";                        
+            ViewBag.ProduktSortPar = sortOrder == "Produkt" ? "Produkt_desc" : "Produkt";
+            ViewBag.DateSortPar = sortOrder == "Date" ? "Date_desc" : "Date";            
+            ViewBag.FinishedSortPar = "Finished";
+            ViewBag.NotFinishedSortPar = "Not_Finished";
+           
 
             var projekte = from p in db.Projekte.Include(p => p.Entwickler).Include(p => p.Kunde).Include(p => p.Produkt)
                          select p;
@@ -47,6 +51,22 @@ namespace Futura.Controllers
                     break;
                 case "Produkt":
                     projekte = projekte.OrderBy(p => p.ProduktID);
+                    break;
+                case "Date":
+                    projekte = projekte.OrderBy(p => p.Abgabetermin);
+                    break;
+                case "Date_desc":
+                    projekte = projekte.OrderByDescending(p => p.Abgabetermin);
+                    break;
+                case "Finished":
+                    projekte = from p in db.Projekte.Include(p => p.Entwickler).Include(p => p.Kunde).Include(p => p.Produkt)
+                               where p.Abgeschlossen == true
+                               select p;
+                    break;
+                case "Not_Finished":
+                    projekte = from p in db.Projekte.Include(p => p.Entwickler).Include(p => p.Kunde).Include(p => p.Produkt)
+                               where p.Abgeschlossen == false
+                               select p;
                     break;
                 default:
                     projekte = projekte.OrderBy(p => p.Projekttitel);

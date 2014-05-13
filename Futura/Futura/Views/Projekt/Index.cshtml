@@ -8,7 +8,7 @@
 @if (Request.IsAuthenticated)
 {
     <p>
-        @Html.ActionLink("Erstellen", "Create")
+        @Html.ActionLink("Erstellen", "Create") | Sortieren nach: @Html.ActionLink("Abgeschlossen", "Index", new { sortOrder = ViewBag.FinishedSortPar  }) @Html.ActionLink("Offen", "Index", new { sortOrder = ViewBag.NotFinishedSortPar }) @Html.ActionLink("Alle", "Index")
     </p>
     <table class="table">
         <tr>
@@ -25,7 +25,7 @@
                 @Html.ActionLink("Projekttitel", "Index", new { sortOrder = ViewBag.ProdukttitelSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Abgabetermin)
+                @Html.ActionLink("Abgabetermin", "Index", new { sortOrder = ViewBag.DateSortPar })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Abgeschlossen)
